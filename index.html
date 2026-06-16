@@ -414,6 +414,97 @@
 
   .contact-email:hover { color: var(--crimson-light); }
 
+  .contact-form {
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    text-align: left;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.25rem;
+  }
+
+  .form-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--crimson-light);
+    margin-bottom: 0.5rem;
+  }
+
+  .form-input {
+    background: var(--off-black);
+    border: 1px solid var(--border);
+    color: var(--parchment);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 0.88rem;
+    padding: 0.75rem 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  .form-input::placeholder { color: var(--dust); }
+  .form-input:focus { border-color: var(--crimson); }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .form-submit {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--white);
+    background: none;
+    border: 1px solid var(--crimson);
+    padding: 0.85rem 2rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .form-submit:hover { background: var(--crimson); }
+
+  .contact-links {
+    margin-top: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .contact-link {
+    font-family: 'IM Fell English', serif;
+    font-size: 1rem;
+    color: var(--fog);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.1rem;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .contact-link:hover { color: var(--white); border-color: var(--crimson); }
+
+  .contact-divider { color: var(--border); }
+
+  @media (max-width: 768px) {
+    .form-row { grid-template-columns: 1fr; }
+  }
+
   /* FOOTER */
   footer {
     padding: 2rem 3rem;
@@ -576,7 +667,6 @@
 <section class="about-section" id="about">
   <div class="about-body">
     <p>Animal Style is the independent studio of <strong>Douglas Yoshida</strong> — a VFX artist and Gen AI specialist with 25 years across DreamWorks, Digital Domain, Sony Pictures Imageworks, and Amazon Studios.</p>
-    <p>Animal Style bridges traditional VFX craft with generative AI — building production-grade workflows for the next generation of AI visual storytelling.</p>
     <p>Credits span Marvel and Stranger Things VFX at Digital Domain, product visualization for Apple at Method Studios, and feature animation at Paramount and DreamWorks. The same eye, applied to new tools.</p>
     <div class="studio-credits">
       <p class="credits-label">Worked at</p>
@@ -599,7 +689,44 @@
 <section class="contact-section" id="contact">
   <h2 class="contact-title display">Get in contact and let's discuss <em>your project.</em></h2>
   <p class="contact-sub">Available for studio contracts, consulting engagements, and select independent productions. Based in Los Angeles.</p>
-  <a href="mailto:hello@animalstyle.ai" class="contact-email display">hello@animalstyle.ai</a>
+
+  <form class="contact-form" action="https://formspree.io/f/mzdqwobj" method="POST">
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label" for="name">Name</label>
+        <input class="form-input" type="text" id="name" name="name" placeholder="Your name" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="email">Email</label>
+        <input class="form-input" type="email" id="email" name="email" placeholder="your@email.com" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="project">Project type</label>
+      <select class="form-input" id="project" name="project">
+        <option value="" disabled selected>Select a service</option>
+        <option>Visual Development</option>
+        <option>Storyboards, Animatics & Previs</option>
+        <option>Commercials</option>
+        <option>Animated Shorts & Features</option>
+        <option>Gen AI Films</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="message">Message</label>
+      <textarea class="form-input form-textarea" id="message" name="message" placeholder="Tell me about your project..." required></textarea>
+    </div>
+    <button class="form-submit" type="submit">Send message</button>
+  </form>
+
+  <div class="contact-links">
+    <a href="mailto:hello@animalstyle.ai" class="contact-link">hello@animalstyle.ai</a>
+    <span class="contact-divider">·</span>
+    <a href="https://www.linkedin.com/in/yoshfx/" target="_blank" rel="noopener" class="contact-link">LinkedIn</a>
+    <span class="contact-divider">·</span>
+    <a href="https://www.imdb.com/name/nm1324690/" target="_blank" rel="noopener" class="contact-link">IMDb</a>
+  </div>
 </section>
 
 <!-- FOOTER -->
