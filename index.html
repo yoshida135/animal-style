@@ -1,48 +1,612 @@
-Animal Style.
-	•	REEL
-	•	SERVICES
-	•	ABOUT
-	•	CONTACT
-AI PRODUCTION STUDIO — LOS ANGELES
-Animal Style AI for the next generation of visual storytelling.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animal Style — AI Production Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-Animal Style bridges traditional VFX craft with generative AI — building production-grade workflows for the next generation of AI visual storytelling.
-WORK — 2026
-NEO ANGELES TEASER
+  :root {
+    --black: #0a0908;
+    --off-black: #111010;
+    --surface: #161514;
+    --border: #2a2826;
+    --crimson: #8b1a1a;
+    --crimson-light: #b52222;
+    --dust: #6b6460;
+    --fog: #a09890;
+    --parchment: #d4cdc7;
+    --white: #ede8e3;
+  }
 
-ALIEN SKATER
+  html { scroll-behavior: smooth; }
 
-CYBERTRUCK LOWRIDER
+  body {
+    background: var(--black);
+    color: var(--parchment);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
 
-WHAT WE DO
-Services
-I
-Visual Development
-Style frames, mood boards, and generative concept art that establish the look of a project before a single frame is shot. Fast, iterative, and built for director approval.
-II
-Storyboards, Animatics & Previs
-AI-assisted boards to full animatics and previs — shot design, camera blocking, and timing cuts delivered at a pace traditional pipelines can't match.
-III
-Commercials
-End-to-end AI video production for brands — concept through delivery. Generative footage, motion design, and finishing at a fraction of traditional production cost.
-IV
-Animated Shorts & Features
-Original animated content built on generative AI pipelines. From proof-of-concept shorts to full feature development — one studio, production-grade output.
-V
-Gen AI Films
-Cinematic generative work that pushes the medium — experimental narrative, music videos, and festival-ready short films made with AI as the primary production tool.
-￼
-Animal Style is the independent studio of Douglas Yoshida — a VFX artist and Gen AI specialist with 25 years across DreamWorks, Digital Domain, Sony Pictures Imageworks, and Amazon Studios.
-Animal Style bridges traditional VFX craft with generative AI — building production-grade workflows for the next generation of AI visual storytelling.
-Credits span Marvel and Stranger Things VFX at Digital Domain, product visualization for Apple at Method Studios, and feature animation at Paramount and DreamWorks. The same eye, applied to new tools.
-WORKED AT
-DreamWorks · Digital Domain · Sony Pictures Imageworks · Amazon Studios · Paramount Animation · Method Studios
-SELECTED CREDITS
-Stranger Things 4 · The Matrix Reloaded · The Matrix Revolutions · Shrek · Black Panther · Spider-Man: Homecoming · Fast & Furious 8
-￼
-￼
-Get in contact and let's discuss your project.
-Available for studio contracts, consulting engagements, and select independent productions. Based in Los Angeles.
-hello@animalstyle.ai
-Animal Style
-© 2026 Animal Style AI Studio · Los Angeles
+  .display {
+    font-family: 'IM Fell English', serif;
+    font-weight: 400;
+  }
+
+  .display-italic {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10,9,8,0.92);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(8px);
+  }
+
+  .nav-logo {
+    font-family: 'IM Fell English', serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+    color: var(--white);
+    text-decoration: none;
+  }
+
+  .nav-logo span {
+    color: var(--crimson-light);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--fog);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 3rem 5rem;
+    position: relative;
+    background-image: url('still-02.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10,9,8,0.95) 0%, rgba(10,9,8,0.5) 50%, rgba(10,9,8,0.3) 100%);
+    z-index: 0;
+  }
+
+  .hero > * { position: relative; z-index: 1; }
+
+  .hero-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--crimson-light);
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-title {
+    font-family: 'IM Fell English', serif;
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 1.05;
+    color: var(--white);
+    max-width: 14ch;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--parchment);
+  }
+
+  .hero-sub {
+    font-size: 0.9rem;
+    color: var(--fog);
+    max-width: 42ch;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-rule {
+    width: 40px;
+    height: 1px;
+    background: var(--crimson);
+    margin-bottom: 2.5rem;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--white);
+    border: 1px solid var(--crimson);
+    padding: 0.85rem 2rem;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .btn-primary:hover {
+    background: var(--crimson);
+    color: var(--white);
+  }
+
+  /* REEL */
+  .reel-section {
+    padding: 6rem 3rem;
+    background: var(--off-black);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--crimson-light);
+    margin-bottom: 3rem;
+  }
+
+  .reel-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .reel-wrapper iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+  }
+
+  /* SERVICES */
+  .services-section {
+    padding: 7rem 3rem;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 3rem;
+    margin-bottom: 4rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2rem;
+  }
+
+  .section-title {
+    font-family: 'IM Fell English', serif;
+    font-size: 2.2rem;
+    color: var(--white);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 0;
+  }
+
+  .service-item {
+    padding: 2.5rem 2rem 2.5rem 0;
+    border-bottom: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+  }
+
+  .service-item:nth-child(3n) {
+    border-right: none;
+  }
+
+  .service-num {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--crimson-light);
+    margin-bottom: 1.2rem;
+  }
+
+  .service-name {
+    font-family: 'IM Fell English', serif;
+    font-size: 1.3rem;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+  }
+
+  .service-desc {
+    font-size: 0.85rem;
+    color: var(--fog);
+    line-height: 1.8;
+  }
+
+  .img-break {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    display: block;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .studio-credits {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .credits-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--crimson-light);
+    margin-bottom: 0.6rem;
+  }
+
+  .credits-list {
+    font-size: 0.78rem;
+    color: var(--fog);
+    line-height: 1.9;
+    letter-spacing: 0.03em;
+  }
+
+  /* ABOUT */
+  .about-section {
+    padding: 7rem 3rem;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    max-width: 720px;
+  }
+
+  .about-quote {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    color: var(--parchment);
+    line-height: 1.45;
+  }
+
+  .about-quote cite {
+    display: block;
+    font-style: normal;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--crimson-light);
+    margin-top: 1.5rem;
+  }
+
+  .about-body p {
+    font-size: 0.9rem;
+    color: var(--fog);
+    line-height: 1.9;
+    margin-bottom: 1.25rem;
+  }
+
+  .about-body p:last-child { margin-bottom: 0; }
+
+  .about-body strong {
+    color: var(--parchment);
+    font-weight: 400;
+  }
+
+  /* PIPELINE */
+  .pipeline-section {
+    padding: 7rem 3rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .pipeline-steps {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .pipeline-step {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+  }
+
+  .step-num {
+    font-family: 'IM Fell English', serif;
+    font-size: 3rem;
+    color: var(--border);
+    line-height: 1;
+  }
+
+  .step-name {
+    font-family: 'IM Fell English', serif;
+    font-size: 1.15rem;
+    color: var(--white);
+    margin-bottom: 0.4rem;
+  }
+
+  .step-tools {
+    font-size: 0.78rem;
+    color: var(--crimson-light);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+
+  .step-desc {
+    font-size: 0.83rem;
+    color: var(--fog);
+    line-height: 1.75;
+  }
+
+  /* CONTACT */
+  .contact-section {
+    padding: 7rem 3rem;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .contact-title {
+    font-family: 'IM Fell English', serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    color: var(--white);
+    margin-bottom: 1rem;
+  }
+
+  .contact-title em {
+    font-style: italic;
+    color: var(--parchment);
+  }
+
+  .contact-sub {
+    font-size: 0.88rem;
+    color: var(--fog);
+    max-width: 48ch;
+    margin: 0 auto 3rem;
+    line-height: 1.8;
+  }
+
+  .contact-email {
+    display: inline-block;
+    font-family: 'IM Fell English', serif;
+    font-size: 1.4rem;
+    color: var(--white);
+    text-decoration: none;
+    border-bottom: 1px solid var(--crimson);
+    padding-bottom: 0.2rem;
+    transition: color 0.2s;
+  }
+
+  .contact-email:hover { color: var(--crimson-light); }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 3rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-logo {
+    font-family: 'IM Fell English', serif;
+    font-size: 0.9rem;
+    color: var(--dust);
+  }
+
+  .footer-copy {
+    font-size: 0.72rem;
+    color: var(--dust);
+    letter-spacing: 0.08em;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1.25rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+    .hero { padding: 0 1.5rem 4rem; }
+    .reel-section, .services-section, .pipeline-section, .contact-section { padding: 5rem 1.5rem; }
+    .about-section {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      padding: 5rem 1.5rem;
+    }
+    .service-item:nth-child(3n) { border-right: 1px solid var(--border); }
+    .service-item { border-right: none; }
+    footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+
+  .reel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .reel-featured-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--dust);
+    margin-bottom: 0.75rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Animal Style<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#reel">Reel</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow">AI Production Studio — Los Angeles</p>
+  <h1 class="hero-title display">Animal Style AI for the <em>next generation</em> of visual storytelling.</h1>
+  <div class="hero-rule"></div>
+  <p class="hero-sub">Animal Style bridges traditional VFX craft with generative AI — building production-grade workflows for the next generation of AI visual storytelling.</p>
+  
+</section>
+
+<!-- REEL -->
+<section class="reel-section" id="reel">
+  <p class="section-label">Work — 2026</p>
+
+  <div class="reel-featured-label">Neo Angeles Teaser</div>
+  <div class="reel-wrapper" style="margin-bottom: 1rem;">
+    <iframe
+      src="https://player.vimeo.com/video/1201646203?color=8b1a1a&title=0&byline=0&portrait=0&badge=0"
+      frameborder="0"
+      allow="autoplay; fullscreen; picture-in-picture"
+      allowfullscreen
+      title="Animal Style — Animated Music Video">
+    </iframe>
+  </div>
+
+  <div class="reel-grid">
+    <div>
+      <div class="reel-featured-label">Alien Skater</div>
+      <div class="reel-wrapper">
+        <iframe
+          src="https://player.vimeo.com/video/1201645422?color=8b1a1a&title=0&byline=0&portrait=0&badge=0"
+          frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen
+          title="Animal Style — Alien Skater">
+        </iframe>
+      </div>
+    </div>
+    <div>
+      <div class="reel-featured-label">Cybertruck Lowrider</div>
+      <div class="reel-wrapper">
+        <iframe
+          src="https://player.vimeo.com/video/1201657364?color=8b1a1a&title=0&byline=0&portrait=0&badge=0"
+          frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen
+          title="Animal Style — Cybertruck Lowrider">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="section-header">
+    <p class="section-label" style="margin-bottom:0;">What we do</p>
+    <h2 class="section-title display">Services</h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-item">
+      <p class="service-num">I</p>
+      <h3 class="service-name display">Visual Development</h3>
+      <p class="service-desc">Style frames, mood boards, and generative concept art that establish the look of a project before a single frame is shot. Fast, iterative, and built for director approval.</p>
+    </div>
+    <div class="service-item">
+      <p class="service-num">II</p>
+      <h3 class="service-name display">Storyboards, Animatics & Previs</h3>
+      <p class="service-desc">AI-assisted boards to full animatics and previs — shot design, camera blocking, and timing cuts delivered at a pace traditional pipelines can't match.</p>
+    </div>
+    <div class="service-item">
+      <p class="service-num">III</p>
+      <h3 class="service-name display">Commercials</h3>
+      <p class="service-desc">End-to-end AI video production for brands — concept through delivery. Generative footage, motion design, and finishing at a fraction of traditional production cost.</p>
+    </div>
+    <div class="service-item">
+      <p class="service-num">IV</p>
+      <h3 class="service-name display">Animated Shorts & Features</h3>
+      <p class="service-desc">Original animated content built on generative AI pipelines. From proof-of-concept shorts to full feature development — one studio, production-grade output.</p>
+    </div>
+    <div class="service-item">
+      <p class="service-num">V</p>
+      <h3 class="service-name display">Gen AI Films</h3>
+      <p class="service-desc">Cinematic generative work that pushes the medium — experimental narrative, music videos, and festival-ready short films made with AI as the primary production tool.</p>
+    </div>
+  </div>
+</section>
+
+<!-- IMAGE BREAK 1 -->
+<img src="still-01.jpg" alt="Neo Angeles — Animal Style AI Studio" class="img-break">
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="about-body">
+    <p>Animal Style is the independent studio of <strong>Douglas Yoshida</strong> — a VFX artist and Gen AI specialist with 25 years across DreamWorks, Digital Domain, Sony Pictures Imageworks, and Amazon Studios.</p>
+    <p>Animal Style bridges traditional VFX craft with generative AI — building production-grade workflows for the next generation of AI visual storytelling.</p>
+    <p>Credits span Marvel and Stranger Things VFX at Digital Domain, product visualization for Apple at Method Studios, and feature animation at Paramount and DreamWorks. The same eye, applied to new tools.</p>
+    <div class="studio-credits">
+      <p class="credits-label">Worked at</p>
+      <p class="credits-list">DreamWorks · Digital Domain · Sony Pictures Imageworks · Amazon Studios · Paramount Animation · Method Studios</p>
+    </div>
+    <div class="studio-credits">
+      <p class="credits-label">Selected Credits</p>
+      <p class="credits-list">Stranger Things 4 · The Matrix Reloaded · The Matrix Revolutions · Shrek · Black Panther · Spider-Man: Homecoming · Fast & Furious 8</p>
+    </div>
+  </div>
+</section>
+
+<!-- IMAGE BREAK 2 -->
+<img src="still-03.jpg" alt="Neo Angeles — Animal Style AI Studio" class="img-break">
+
+<!-- IMAGE BREAK 3 -->
+<img src="still-04.jpg" alt="Neo Angeles — Animal Style AI Studio" class="img-break" style="border-top: none;">
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <h2 class="contact-title display">Get in contact and let's discuss <em>your project.</em></h2>
+  <p class="contact-sub">Available for studio contracts, consulting engagements, and select independent productions. Based in Los Angeles.</p>
+  <a href="mailto:hello@animalstyle.ai" class="contact-email display">hello@animalstyle.ai</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo display">Animal Style</span>
+  <span class="footer-copy">© 2026 Animal Style AI Studio · Los Angeles</span>
+</footer>
+
+</body>
+</html>
