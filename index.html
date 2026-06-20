@@ -529,7 +529,9 @@
   /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 1.25rem 1.5rem; }
-    .nav-links { gap: 1.5rem; }
+    .nav-links { gap: 1.2rem; }
+    .nav-links a { font-size: 0.65rem; letter-spacing: 0.1em; }
+    .nav-logo { font-size: 0.9rem; }
     .hero { padding: 0 1.5rem 4rem; }
     .reel-section, .services-section, .pipeline-section, .contact-section { padding: 5rem 1.5rem; }
     .about-section {
@@ -540,12 +542,20 @@
     .service-item:nth-child(3n) { border-right: 1px solid var(--border); }
     .service-item { border-right: none; }
     footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+    .img-break { height: 55vw !important; min-height: 220px; max-height: 400px; }
   }
 
   .reel-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    .nav-links li:nth-child(3),
+    .nav-links li:nth-child(4) { display: none; }
+    .nav-logo { font-size: 0.8rem; }
+    .reel-grid { grid-template-columns: 1fr; }
   }
 
   .reel-featured-label {
@@ -690,7 +700,7 @@
 </section>
 
 <!-- IMAGE BREAK 1 -->
-<img src="still-01.jpg" alt="Neo Angeles — Animal Style AI Studio" class="img-break" style="height: 800px; object-position: center center;">
+<img src="still-01.jpg" alt="Neo Angeles — Animal Style AI Studio" class="img-break" style="height: 800px; object-position: center 30%;">
 
 <!-- ABOUT -->
 <section class="about-section" id="about">
@@ -710,7 +720,7 @@
 </section>
 
 <!-- IMAGE BREAK 2 -->
-<img src="still-03.jpg" alt="Neo Angeles — Animal Style AI Studio" class="img-break" style="height: 800px; object-position: center center;">
+<img src="still-03.jpg" alt="Neo Angeles — Animal Style AI Studio" class="img-break" style="height: 800px; object-position: center 40%;">
 
 <!-- CONTACT -->
 <section class="contact-section" id="contact">
