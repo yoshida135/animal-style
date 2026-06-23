@@ -1,0 +1,29 @@
+{
+  "name": "animal-style",
+  "version": "1.0.0",
+  "description": "Animal Style — AI Production Studio",
+  "scripts": {
+    "dev": "npx serve .",
+    "serve": "npx serve .",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yoshida135/animal-style.git"
+  },
+  "keywords": [
+    "ai",
+    "production",
+    "studio",
+    "vercel"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yoshida135/animal-style/issues"
+  },
+  "homepage": "https://github.com/yoshida135/animal-style#readme",
+  "dependencies": {
+    "@vercel/speed-insights": "^2.0.0"
+  }
+}
