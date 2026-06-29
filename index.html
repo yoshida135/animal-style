@@ -7,10 +7,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-<script>
-  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/insights/script.js"></script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -533,9 +529,7 @@
   /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 1.25rem 1.5rem; }
-    .nav-links { gap: 1.2rem; }
-    .nav-links a { font-size: 0.65rem; letter-spacing: 0.1em; }
-    .nav-logo { font-size: 0.9rem; }
+    .nav-links { gap: 1.5rem; }
     .hero { padding: 0 1.5rem 4rem; }
     .reel-section, .services-section, .pipeline-section, .contact-section { padding: 5rem 1.5rem; }
     .about-section {
@@ -546,20 +540,12 @@
     .service-item:nth-child(3n) { border-right: 1px solid var(--border); }
     .service-item { border-right: none; }
     footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
-    .img-break { height: 55vw !important; min-height: 220px; max-height: 400px; }
   }
 
   .reel-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
-  }
-
-  @media (max-width: 480px) {
-    .nav-links { gap: 0.75rem; }
-    .nav-links a { font-size: 0.6rem; letter-spacing: 0.06em; }
-    .nav-logo { font-size: 0.78rem; letter-spacing: 0.04em; }
-    .reel-grid { grid-template-columns: 1fr; }
   }
 
   .reel-featured-label {
@@ -600,7 +586,18 @@
 <section class="reel-section" id="reel">
   <p class="section-label">Work — 2026</p>
 
-  <div class="reel-featured-label">Neo Angeles Teaser</div>
+  <div class="reel-featured-label">Tomorrow's Keeper</div>
+  <div class="reel-wrapper" style="margin-bottom: 1rem;">
+    <iframe
+      src="https://player.vimeo.com/video/1205540148?color=8b1a1a&title=0&byline=0&portrait=0&badge=0"
+      frameborder="0"
+      allow="autoplay; fullscreen; picture-in-picture"
+      allowfullscreen
+      title="Animal Style — Tomorrow's Keeper">
+    </iframe>
+  </div>
+
+  <div class="reel-featured-label" style="margin-top: 1rem;">Neo Angeles Teaser</div>
   <div class="reel-wrapper" style="margin-bottom: 1rem;">
     <iframe
       src="https://player.vimeo.com/video/1201646203?color=8b1a1a&title=0&byline=0&portrait=0&badge=0"
@@ -650,14 +647,14 @@
   </div>
 
   <div style="margin-top: 1rem;">
-    <div class="reel-featured-label">After Midnight</div>
+    <div class="reel-featured-label">K-9 Cop</div>
     <div class="reel-wrapper">
       <iframe
-        src="https://player.vimeo.com/video/1203096156?color=8b1a1a&title=0&byline=0&portrait=0&badge=0"
+        src="https://player.vimeo.com/video/1205520574?color=8b1a1a&title=0&byline=0&portrait=0&badge=0"
         frameborder="0"
         allow="autoplay; fullscreen; picture-in-picture"
         allowfullscreen
-        title="Animal Style — After Midnight">
+        title="Animal Style — K-9 Cop">
       </iframe>
     </div>
   </div>
@@ -704,7 +701,7 @@
 </section>
 
 <!-- IMAGE BREAK 1 -->
-<img src="still-01.jpg" alt="Neo Angeles — Animal Style AI Studio" class="img-break" style="height: 800px; object-position: center 30%;">
+<img src="still-01.jpg" alt="Neo Angeles — Animal Style AI Studio" class="img-break" style="height: 800px; object-position: center center;">
 
 <!-- ABOUT -->
 <section class="about-section" id="about">
@@ -724,7 +721,7 @@
 </section>
 
 <!-- IMAGE BREAK 2 -->
-<img src="still-03.jpg" alt="Neo Angeles — Animal Style AI Studio" class="img-break" style="height: 800px; object-position: center 40%;">
+<img src="still-03.jpg" alt="Neo Angeles — Animal Style AI Studio" class="img-break" style="height: 800px; object-position: center center;">
 
 <!-- CONTACT -->
 <section class="contact-section" id="contact">
