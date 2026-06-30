@@ -266,6 +266,14 @@
     will-change: transform;
   }
 
+  @media (max-width: 768px) {
+    .parallax-break { height: 500px; }
+    .parallax-break img {
+      top: 0;
+      height: 100%;
+    }
+  }
+
   /* ABOUT */
   .about-section {
     padding: 7rem 3rem;
@@ -618,6 +626,7 @@
   // PARALLAX
   const parallaxSections = document.querySelectorAll('[data-parallax]');
   function updateParallax() {
+    if (window.innerWidth <= 768) return;
     parallaxSections.forEach(section => {
       const img = section.querySelector('[data-parallax-img]');
       if (!img) return;
