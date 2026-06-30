@@ -216,6 +216,78 @@
     text-transform: uppercase;
     color: var(--dust);
     margin-bottom: 0.75rem;
+    cursor: default;
+  }
+
+  /* HOVER PREVIEW */
+  .reel-item {
+    position: relative;
+  }
+
+  .reel-item .reel-featured-label {
+    cursor: pointer;
+    display: inline-block;
+    transition: color 0.2s;
+  }
+  .reel-item .reel-featured-label:hover { color: var(--parchment); }
+
+  .hover-preview {
+    position: fixed;
+    width: 380px;
+    aspect-ratio: 16/9;
+    pointer-events: none;
+    z-index: 200;
+    opacity: 0;
+    transform: translateY(8px) scale(0.97);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    border: 1px solid var(--border);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+    overflow: hidden;
+    background: var(--black);
+  }
+
+  .hover-preview.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .hover-preview .preview-thumb {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+  }
+
+  .hover-preview .preview-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .hover-preview .preview-video.loaded {
+    opacity: 1;
+  }
+
+  .hover-preview .preview-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--parchment);
+    background: linear-gradient(to top, rgba(10,9,8,0.9), transparent);
+    z-index: 3;
   }
 
   .reel-grid {
@@ -500,21 +572,21 @@
 <section class="reel-section" id="reel">
   <p class="section-label reveal">Work — 2026</p>
 
-  <div class="reveal reveal-delay-1">
+  <div class="reel-item reveal reveal-delay-1" data-video-id="1205540148" data-title="Tomorrow's Keeper">
     <div class="reel-featured-label">Tomorrow's Keeper</div>
     <div class="reel-wrapper" style="margin-bottom: 1rem;">
       <iframe src="https://player.vimeo.com/video/1205540148?color=8b1a1a&title=0&byline=0&portrait=0&badge=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Animal Style — Tomorrow's Keeper"></iframe>
     </div>
   </div>
 
-  <div class="reveal reveal-delay-2" style="margin-top: 1rem;">
+  <div class="reel-item reveal reveal-delay-2" data-video-id="1201646203" data-title="Neo Angeles Teaser" style="margin-top: 1rem;">
     <div class="reel-featured-label">Neo Angeles Teaser</div>
     <div class="reel-wrapper" style="margin-bottom: 1rem;">
       <iframe src="https://player.vimeo.com/video/1201646203?color=8b1a1a&title=0&byline=0&portrait=0&badge=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Animal Style — Neo Angeles Teaser"></iframe>
     </div>
   </div>
 
-  <div class="reveal reveal-delay-3" style="margin-top: 1rem;">
+  <div class="reel-item reveal reveal-delay-3" data-video-id="1203084855" data-title="Elements" style="margin-top: 1rem;">
     <div class="reel-featured-label">Elements</div>
     <div class="reel-wrapper" style="margin-bottom: 1rem;">
       <iframe src="https://player.vimeo.com/video/1203084855?color=8b1a1a&title=0&byline=0&portrait=0&badge=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Animal Style — Elements"></iframe>
@@ -522,13 +594,13 @@
   </div>
 
   <div class="reel-grid reveal reveal-delay-4">
-    <div>
+    <div class="reel-item" data-video-id="1201645422" data-title="Alien Skater">
       <div class="reel-featured-label">Alien Skater</div>
       <div class="reel-wrapper">
         <iframe src="https://player.vimeo.com/video/1201645422?color=8b1a1a&title=0&byline=0&portrait=0&badge=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Animal Style — Alien Skater"></iframe>
       </div>
     </div>
-    <div>
+    <div class="reel-item" data-video-id="1201657364" data-title="Cybertruck Lowrider">
       <div class="reel-featured-label">Cybertruck Lowrider</div>
       <div class="reel-wrapper">
         <iframe src="https://player.vimeo.com/video/1201657364?color=8b1a1a&title=0&byline=0&portrait=0&badge=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Animal Style — Cybertruck Lowrider"></iframe>
@@ -536,7 +608,7 @@
     </div>
   </div>
 
-  <div class="reveal reveal-delay-5" style="margin-top: 1rem;">
+  <div class="reel-item reveal reveal-delay-5" data-video-id="1205520574" data-title="K-9 Cop" style="margin-top: 1rem;">
     <div class="reel-featured-label">K-9 Cop</div>
     <div class="reel-wrapper">
       <iframe src="https://player.vimeo.com/video/1205520574?color=8b1a1a&title=0&byline=0&portrait=0&badge=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Animal Style — K-9 Cop"></iframe>
@@ -650,6 +722,13 @@
   </div>
 </section>
 
+<!-- HOVER PREVIEW -->
+<div class="hover-preview" id="hoverPreview">
+  <img class="preview-thumb" id="previewThumb" src="" alt="">
+  <iframe class="preview-video" id="previewVideo" src="" frameborder="0" allow="autoplay; muted"></iframe>
+  <div class="preview-label" id="previewLabel"></div>
+</div>
+
 <!-- FOOTER -->
 <footer>
   <span class="footer-logo display">Animal Style</span>
@@ -685,6 +764,82 @@
   }
   window.addEventListener('scroll', updateParallax, { passive: true });
   updateParallax();
+
+  // HOVER PREVIEW
+  const preview = document.getElementById('hoverPreview');
+  const previewThumb = document.getElementById('previewThumb');
+  const previewVideo = document.getElementById('previewVideo');
+  const previewLabel = document.getElementById('previewLabel');
+  const thumbCache = {};
+  let activeVideoId = null;
+  let videoTimeout = null;
+
+  async function getThumb(videoId) {
+    if (thumbCache[videoId]) return thumbCache[videoId];
+    try {
+      const res = await fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${videoId}`);
+      const data = await res.json();
+      thumbCache[videoId] = data.thumbnail_url;
+      return data.thumbnail_url;
+    } catch(e) {
+      return '';
+    }
+  }
+
+  document.querySelectorAll('.reel-item').forEach(item => {
+    const label = item.querySelector('.reel-featured-label');
+    if (!label) return;
+    const videoId = item.dataset.videoId;
+    const title = item.dataset.title;
+
+    label.addEventListener('mouseenter', async (e) => {
+      if (!videoId) return;
+      activeVideoId = videoId;
+      previewLabel.textContent = title;
+      previewVideo.src = '';
+      previewVideo.classList.remove('loaded');
+
+      // Show thumb immediately
+      const thumb = await getThumb(videoId);
+      if (activeVideoId !== videoId) return;
+      previewThumb.src = thumb;
+      preview.classList.add('visible');
+
+      // Load video after short delay
+      videoTimeout = setTimeout(() => {
+        if (activeVideoId !== videoId) return;
+        previewVideo.src = `https://player.vimeo.com/video/${videoId}?autoplay=1&muted=1&loop=1&title=0&byline=0&portrait=0&background=1`;
+        previewVideo.onload = () => {
+          if (activeVideoId === videoId) previewVideo.classList.add('loaded');
+        };
+      }, 400);
+    });
+
+    label.addEventListener('mouseleave', () => {
+      activeVideoId = null;
+      clearTimeout(videoTimeout);
+      preview.classList.remove('visible');
+      setTimeout(() => {
+        previewVideo.src = '';
+        previewVideo.classList.remove('loaded');
+      }, 300);
+    });
+
+    label.addEventListener('mousemove', (e) => {
+      const x = e.clientX;
+      const y = e.clientY;
+      const pw = 380;
+      const ph = pw * 9/16;
+      const margin = 20;
+      let left = x + margin;
+      let top = y - ph / 2;
+      if (left + pw > window.innerWidth - margin) left = x - pw - margin;
+      if (top < margin) top = margin;
+      if (top + ph > window.innerHeight - margin) top = window.innerHeight - ph - margin;
+      preview.style.left = left + 'px';
+      preview.style.top = top + 'px';
+    });
+  });
 </script>
 
 </body>
