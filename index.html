@@ -257,17 +257,17 @@
   }
   .parallax-break img {
     position: absolute;
-    top: -20%;
+    top: 0;
     left: 0;
     width: 100%;
-    height: 140%;
+    height: 100%;
     object-fit: cover;
     object-position: center center;
     will-change: transform;
   }
 
   @media (max-width: 768px) {
-    .parallax-break { height: 800px; }
+    .parallax-break { height: 500px; }
   }
 
   /* ABOUT */
@@ -629,7 +629,7 @@
       const windowH = window.innerHeight;
       if (rect.bottom < 0 || rect.top > windowH) return;
       const progress = (windowH - rect.top) / (windowH + rect.height);
-      const offset = (progress - 0.5) * 120;
+      const offset = (progress - 0.5) * 40;
       img.style.transform = `translateY(${offset}px)`;
     });
   }
