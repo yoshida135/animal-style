@@ -226,7 +226,10 @@
 
   .reel-overlay {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 15%;
     z-index: 10;
     pointer-events: none;
     opacity: 0;
@@ -260,25 +263,6 @@
   }
 
   .reel-overlay iframe.loaded { opacity: 1; }
-
-  .reel-overlay .overlay-cta {
-    position: absolute;
-    bottom: 1rem;
-    right: 1rem;
-    z-index: 3;
-    font-size: 0.6rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--white);
-    background: rgba(10,9,8,0.7);
-    border: 1px solid var(--crimson);
-    padding: 0.4rem 0.8rem;
-    cursor: pointer;
-    pointer-events: auto;
-    text-decoration: none;
-    transition: background 0.2s;
-  }
-  .reel-overlay .overlay-cta:hover { background: var(--crimson); }
 
   .reel-wrapper.wide {
     padding-bottom: 43.5%;
@@ -567,7 +551,7 @@
       <div class="reel-overlay">
         <img src="" alt="" class="overlay-thumb">
         <iframe class="overlay-video" src="" frameborder="0" allow="autoplay; muted"></iframe>
-        <a class="overlay-cta" href="https://vimeo.com/1205540148" target="_blank">Watch on Vimeo</a>
+        
       </div>
     </div>
   </div>
@@ -579,7 +563,7 @@
       <div class="reel-overlay">
         <img src="" alt="" class="overlay-thumb">
         <iframe class="overlay-video" src="" frameborder="0" allow="autoplay; muted"></iframe>
-        <a class="overlay-cta" href="https://vimeo.com/1201646203" target="_blank">Watch on Vimeo</a>
+        
       </div>
     </div>
   </div>
@@ -591,7 +575,7 @@
       <div class="reel-overlay">
         <img src="" alt="" class="overlay-thumb">
         <iframe class="overlay-video" src="" frameborder="0" allow="autoplay; muted"></iframe>
-        <a class="overlay-cta" href="https://vimeo.com/1203084855" target="_blank">Watch on Vimeo</a>
+        
       </div>
     </div>
   </div>
@@ -604,7 +588,7 @@
         <div class="reel-overlay">
           <img src="" alt="" class="overlay-thumb">
           <iframe class="overlay-video" src="" frameborder="0" allow="autoplay; muted"></iframe>
-          <a class="overlay-cta" href="https://vimeo.com/1201645422" target="_blank">Watch on Vimeo</a>
+          
         </div>
       </div>
     </div>
@@ -615,7 +599,7 @@
         <div class="reel-overlay">
           <img src="" alt="" class="overlay-thumb">
           <iframe class="overlay-video" src="" frameborder="0" allow="autoplay; muted"></iframe>
-          <a class="overlay-cta" href="https://vimeo.com/1201657364" target="_blank">Watch on Vimeo</a>
+          
         </div>
       </div>
     </div>
@@ -628,7 +612,7 @@
       <div class="reel-overlay">
         <img src="" alt="" class="overlay-thumb">
         <iframe class="overlay-video" src="" frameborder="0" allow="autoplay; muted"></iframe>
-        <a class="overlay-cta" href="https://vimeo.com/1205520574" target="_blank">Watch on Vimeo</a>
+        
       </div>
     </div>
   </div>
