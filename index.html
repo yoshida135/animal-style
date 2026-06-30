@@ -787,12 +787,12 @@
   }
 
   document.querySelectorAll('.reel-item').forEach(item => {
-    const label = item.querySelector('.reel-featured-label');
-    if (!label) return;
+    const wrapper = item.querySelector('.reel-wrapper');
+    if (!wrapper) return;
     const videoId = item.dataset.videoId;
     const title = item.dataset.title;
 
-    label.addEventListener('mouseenter', async (e) => {
+    wrapper.addEventListener('mouseenter', async (e) => {
       if (!videoId) return;
       activeVideoId = videoId;
       previewLabel.textContent = title;
@@ -815,7 +815,7 @@
       }, 400);
     });
 
-    label.addEventListener('mouseleave', () => {
+    wrapper.addEventListener('mouseleave', () => {
       activeVideoId = null;
       clearTimeout(videoTimeout);
       preview.classList.remove('visible');
@@ -825,7 +825,7 @@
       }, 300);
     });
 
-    label.addEventListener('mousemove', (e) => {
+    wrapper.addEventListener('mousemove', (e) => {
       const x = e.clientX;
       const y = e.clientY;
       const pw = 380;
