@@ -33,24 +33,15 @@
     line-height: 1.7;
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
 
-  .display {
-    font-family: 'IM Fell English', serif;
-    font-weight: 400;
-  }
-
-  .display-italic {
-    font-family: 'IM Fell English', serif;
-    font-style: italic;
-  }
+  .display { font-family: 'IM Fell English', serif; font-weight: 400; }
 
   /* NAV */
   nav {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: 0; left: 0; right: 0;
     z-index: 100;
     padding: 1.5rem 3rem;
     display: flex;
@@ -68,50 +59,62 @@
     color: var(--white);
     text-decoration: none;
   }
+  .nav-logo span { color: var(--crimson-light); }
 
-  .nav-logo span {
-    color: var(--crimson-light);
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
-  }
-
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
   .nav-links a {
     font-size: 0.75rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--fog);
     text-decoration: none;
-    transition: color 0.2s;
+    transition: color 0.3s;
   }
-
   .nav-links a:hover { color: var(--white); }
 
-  /* HERO */
+  /* HERO VIDEO */
   .hero {
+    position: relative;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     padding: 0 3rem 5rem;
-    position: relative;
-    background-image: url('still-02.jpg');
-    background-size: cover;
-    background-position: center;
+    overflow: hidden;
   }
 
-  .hero::before {
-    content: '';
+  .hero-video-bg {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(10,9,8,0.95) 0%, rgba(10,9,8,0.5) 50%, rgba(10,9,8,0.3) 100%);
     z-index: 0;
+    overflow: hidden;
+    background: var(--black);
   }
 
-  .hero > * { position: relative; z-index: 1; }
+  .hero-video-bg iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 177.78vh;
+    height: 56.25vw;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    border: none;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10,9,8,0.97) 0%, rgba(10,9,8,0.6) 40%, rgba(10,9,8,0.3) 100%);
+    z-index: 1;
+  }
+
+  .hero > *:not(.hero-video-bg):not(.hero-overlay) {
+    position: relative;
+    z-index: 2;
+  }
 
   .hero-eyebrow {
     font-size: 0.7rem;
@@ -119,6 +122,9 @@
     text-transform: uppercase;
     color: var(--crimson-light);
     margin-bottom: 1.25rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s ease forwards 0.3s;
   }
 
   .hero-title {
@@ -128,11 +134,18 @@
     color: var(--white);
     max-width: 14ch;
     margin-bottom: 1.5rem;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 0.9s ease forwards 0.5s;
   }
+  .hero-title em { font-style: italic; color: var(--parchment); }
 
-  .hero-title em {
-    font-style: italic;
-    color: var(--parchment);
+  .hero-rule {
+    width: 0px;
+    height: 1px;
+    background: var(--crimson);
+    margin-bottom: 2.5rem;
+    animation: expandRule 0.8s ease forwards 1s;
   }
 
   .hero-sub {
@@ -140,32 +153,33 @@
     color: var(--fog);
     max-width: 42ch;
     line-height: 1.8;
-    margin-bottom: 2.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s ease forwards 1.1s;
   }
 
-  .hero-rule {
-    width: 40px;
-    height: 1px;
-    background: var(--crimson);
-    margin-bottom: 2.5rem;
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes expandRule {
+    to { width: 40px; }
   }
 
-  .btn-primary {
-    display: inline-block;
-    font-size: 0.72rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--white);
-    border: 1px solid var(--crimson);
-    padding: 0.85rem 2rem;
-    text-decoration: none;
-    transition: background 0.2s, color 0.2s;
+  /* SCROLL REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
   }
-
-  .btn-primary:hover {
-    background: var(--crimson);
-    color: var(--white);
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
   }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+  .reveal-delay-5 { transition-delay: 0.5s; }
 
   /* REEL */
   .reel-section {
@@ -190,17 +204,28 @@
     overflow: hidden;
     border: 1px solid var(--border);
   }
-
   .reel-wrapper iframe {
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
   }
 
-  /* SERVICES */
-  .services-section {
-    padding: 7rem 3rem;
+  .reel-featured-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--dust);
+    margin-bottom: 0.75rem;
   }
+
+  .reel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  /* SERVICES */
+  .services-section { padding: 7rem 3rem; }
 
   .section-header {
     display: flex;
@@ -228,10 +253,7 @@
     border-bottom: 1px solid var(--border);
     border-right: 1px solid var(--border);
   }
-
-  .service-item:nth-child(3n) {
-    border-right: none;
-  }
+  .service-item:nth-child(3n) { border-right: none; }
 
   .service-num {
     font-size: 0.65rem;
@@ -253,14 +275,42 @@
     line-height: 1.8;
   }
 
-  .img-break {
-    width: 100%;
-    height: 640px;
-    object-fit: cover;
-    display: block;
+  /* PARALLAX IMAGE BREAKS */
+  .parallax-break {
+    position: relative;
+    height: 800px;
+    overflow: hidden;
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
   }
+
+  .parallax-break img {
+    position: absolute;
+    top: -20%;
+    left: 0;
+    width: 100%;
+    height: 140%;
+    object-fit: cover;
+    object-position: center center;
+    will-change: transform;
+  }
+
+  /* ABOUT */
+  .about-section {
+    padding: 7rem 3rem;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    max-width: 720px;
+  }
+
+  .about-body p {
+    font-size: 0.9rem;
+    color: var(--fog);
+    line-height: 1.9;
+    margin-bottom: 1.25rem;
+  }
+  .about-body p:last-child { margin-bottom: 0; }
+  .about-body strong { color: var(--parchment); font-weight: 400; }
 
   .studio-credits {
     margin-top: 2rem;
@@ -283,96 +333,6 @@
     letter-spacing: 0.03em;
   }
 
-  /* ABOUT */
-  .about-section {
-    padding: 7rem 3rem;
-    background: var(--surface);
-    border-top: 1px solid var(--border);
-    max-width: 720px;
-  }
-
-  .about-quote {
-    font-family: 'IM Fell English', serif;
-    font-style: italic;
-    font-size: clamp(1.4rem, 2.5vw, 2rem);
-    color: var(--parchment);
-    line-height: 1.45;
-  }
-
-  .about-quote cite {
-    display: block;
-    font-style: normal;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.7rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--crimson-light);
-    margin-top: 1.5rem;
-  }
-
-  .about-body p {
-    font-size: 0.9rem;
-    color: var(--fog);
-    line-height: 1.9;
-    margin-bottom: 1.25rem;
-  }
-
-  .about-body p:last-child { margin-bottom: 0; }
-
-  .about-body strong {
-    color: var(--parchment);
-    font-weight: 400;
-  }
-
-  /* PIPELINE */
-  .pipeline-section {
-    padding: 7rem 3rem;
-    border-top: 1px solid var(--border);
-  }
-
-  .pipeline-steps {
-    margin-top: 3rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .pipeline-step {
-    display: grid;
-    grid-template-columns: 80px 1fr;
-    gap: 2rem;
-    padding: 2rem 0;
-    border-bottom: 1px solid var(--border);
-    align-items: start;
-  }
-
-  .step-num {
-    font-family: 'IM Fell English', serif;
-    font-size: 3rem;
-    color: var(--border);
-    line-height: 1;
-  }
-
-  .step-name {
-    font-family: 'IM Fell English', serif;
-    font-size: 1.15rem;
-    color: var(--white);
-    margin-bottom: 0.4rem;
-  }
-
-  .step-tools {
-    font-size: 0.78rem;
-    color: var(--crimson-light);
-    letter-spacing: 0.1em;
-    margin-bottom: 0.5rem;
-  }
-
-  .step-desc {
-    font-size: 0.83rem;
-    color: var(--fog);
-    line-height: 1.75;
-  }
-
   /* CONTACT */
   .contact-section {
     padding: 7rem 3rem;
@@ -387,11 +347,7 @@
     color: var(--white);
     margin-bottom: 1rem;
   }
-
-  .contact-title em {
-    font-style: italic;
-    color: var(--parchment);
-  }
+  .contact-title em { font-style: italic; color: var(--parchment); }
 
   .contact-sub {
     font-size: 0.88rem;
@@ -400,19 +356,6 @@
     margin: 0 auto 3rem;
     line-height: 1.8;
   }
-
-  .contact-email {
-    display: inline-block;
-    font-family: 'IM Fell English', serif;
-    font-size: 1.4rem;
-    color: var(--white);
-    text-decoration: none;
-    border-bottom: 1px solid var(--crimson);
-    padding-bottom: 0.2rem;
-    transition: color 0.2s;
-  }
-
-  .contact-email:hover { color: var(--crimson-light); }
 
   .contact-form {
     max-width: 600px;
@@ -453,14 +396,10 @@
     appearance: none;
     -webkit-appearance: none;
   }
-
   .form-input::placeholder { color: var(--dust); }
   .form-input:focus { border-color: var(--crimson); }
 
-  .form-textarea {
-    resize: vertical;
-    min-height: 120px;
-  }
+  .form-textarea { resize: vertical; min-height: 120px; }
 
   .form-submit {
     display: inline-block;
@@ -476,7 +415,6 @@
     cursor: pointer;
     transition: background 0.2s;
   }
-
   .form-submit:hover { background: var(--crimson); }
 
   .contact-links {
@@ -496,14 +434,8 @@
     padding-bottom: 0.1rem;
     transition: color 0.2s, border-color 0.2s;
   }
-
   .contact-link:hover { color: var(--white); border-color: var(--crimson); }
-
   .contact-divider { color: var(--border); }
-
-  @media (max-width: 768px) {
-    .form-row { grid-template-columns: 1fr; }
-  }
 
   /* FOOTER */
   footer {
@@ -513,51 +445,26 @@
     justify-content: space-between;
     align-items: center;
   }
-
-  .footer-logo {
-    font-family: 'IM Fell English', serif;
-    font-size: 0.9rem;
-    color: var(--dust);
-  }
-
-  .footer-copy {
-    font-size: 0.72rem;
-    color: var(--dust);
-    letter-spacing: 0.08em;
-  }
+  .footer-logo { font-family: 'IM Fell English', serif; font-size: 0.9rem; color: var(--dust); }
+  .footer-copy { font-size: 0.72rem; color: var(--dust); letter-spacing: 0.08em; }
 
   /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 1.25rem 1.5rem; }
     .nav-links { gap: 1.5rem; }
     .hero { padding: 0 1.5rem 4rem; }
-    .reel-section, .services-section, .pipeline-section, .contact-section { padding: 5rem 1.5rem; }
-    .about-section {
-      grid-template-columns: 1fr;
-      gap: 3rem;
-      padding: 5rem 1.5rem;
-    }
-    .service-item:nth-child(3n) { border-right: 1px solid var(--border); }
+    .reel-section, .services-section, .contact-section { padding: 5rem 1.5rem; }
+    .about-section { padding: 5rem 1.5rem; }
     .service-item { border-right: none; }
+    .reel-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
     footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
-  }
-
-  .reel-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-  }
-
-  .reel-featured-label {
-    font-size: 0.65rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--dust);
-    margin-bottom: 0.75rem;
+    .parallax-break { height: 500px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    * { transition: none !important; }
+    *, .reveal { transition: none !important; animation: none !important; opacity: 1 !important; transform: none !important; }
+    .hero-rule { width: 40px; }
   }
 </style>
 </head>
@@ -575,119 +482,96 @@
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-video-bg">
+    <iframe
+      src="https://player.vimeo.com/video/1201646203?background=1&autoplay=1&loop=1&muted=1&title=0&byline=0&portrait=0"
+      allow="autoplay; fullscreen"
+      frameborder="0">
+    </iframe>
+  </div>
+  <div class="hero-overlay"></div>
   <p class="hero-eyebrow">AI Production Studio — Los Angeles</p>
   <h1 class="hero-title display">Animal Style AI Studio for the <em>next generation</em> of visual storytelling.</h1>
   <div class="hero-rule"></div>
   <p class="hero-sub">Animal Style bridges traditional VFX craft with generative AI — building production-grade workflows for the next generation of AI visual storytelling.</p>
-  
 </section>
 
 <!-- REEL -->
 <section class="reel-section" id="reel">
-  <p class="section-label">Work — 2026</p>
+  <p class="section-label reveal">Work — 2026</p>
 
-  <div class="reel-featured-label">Tomorrow's Keeper</div>
-  <div class="reel-wrapper" style="margin-bottom: 1rem;">
-    <iframe
-      src="https://player.vimeo.com/video/1205540148?color=8b1a1a&title=0&byline=0&portrait=0&badge=0"
-      frameborder="0"
-      allow="autoplay; fullscreen; picture-in-picture"
-      allowfullscreen
-      title="Animal Style — Tomorrow's Keeper">
-    </iframe>
+  <div class="reveal reveal-delay-1">
+    <div class="reel-featured-label">Tomorrow's Keeper</div>
+    <div class="reel-wrapper" style="margin-bottom: 1rem;">
+      <iframe src="https://player.vimeo.com/video/1205540148?color=8b1a1a&title=0&byline=0&portrait=0&badge=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Animal Style — Tomorrow's Keeper"></iframe>
+    </div>
   </div>
 
-  <div class="reel-featured-label" style="margin-top: 1rem;">Neo Angeles Teaser</div>
-  <div class="reel-wrapper" style="margin-bottom: 1rem;">
-    <iframe
-      src="https://player.vimeo.com/video/1201646203?color=8b1a1a&title=0&byline=0&portrait=0&badge=0"
-      frameborder="0"
-      allow="autoplay; fullscreen; picture-in-picture"
-      allowfullscreen
-      title="Animal Style — Animated Music Video">
-    </iframe>
+  <div class="reveal reveal-delay-2" style="margin-top: 1rem;">
+    <div class="reel-featured-label">Neo Angeles Teaser</div>
+    <div class="reel-wrapper" style="margin-bottom: 1rem;">
+      <iframe src="https://player.vimeo.com/video/1201646203?color=8b1a1a&title=0&byline=0&portrait=0&badge=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Animal Style — Neo Angeles Teaser"></iframe>
+    </div>
   </div>
 
-  <div class="reel-featured-label" style="margin-top: 1rem;">Elements</div>
-  <div class="reel-wrapper" style="margin-bottom: 1rem;">
-    <iframe
-      src="https://player.vimeo.com/video/1203084855?color=8b1a1a&title=0&byline=0&portrait=0&badge=0"
-      frameborder="0"
-      allow="autoplay; fullscreen; picture-in-picture"
-      allowfullscreen
-      title="Animal Style — Elements">
-    </iframe>
+  <div class="reveal reveal-delay-3" style="margin-top: 1rem;">
+    <div class="reel-featured-label">Elements</div>
+    <div class="reel-wrapper" style="margin-bottom: 1rem;">
+      <iframe src="https://player.vimeo.com/video/1203084855?color=8b1a1a&title=0&byline=0&portrait=0&badge=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Animal Style — Elements"></iframe>
+    </div>
   </div>
 
-  <div class="reel-grid">
+  <div class="reel-grid reveal reveal-delay-4">
     <div>
       <div class="reel-featured-label">Alien Skater</div>
       <div class="reel-wrapper">
-        <iframe
-          src="https://player.vimeo.com/video/1201645422?color=8b1a1a&title=0&byline=0&portrait=0&badge=0"
-          frameborder="0"
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowfullscreen
-          title="Animal Style — Alien Skater">
-        </iframe>
+        <iframe src="https://player.vimeo.com/video/1201645422?color=8b1a1a&title=0&byline=0&portrait=0&badge=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Animal Style — Alien Skater"></iframe>
       </div>
     </div>
     <div>
       <div class="reel-featured-label">Cybertruck Lowrider</div>
       <div class="reel-wrapper">
-        <iframe
-          src="https://player.vimeo.com/video/1201657364?color=8b1a1a&title=0&byline=0&portrait=0&badge=0"
-          frameborder="0"
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowfullscreen
-          title="Animal Style — Cybertruck Lowrider">
-        </iframe>
+        <iframe src="https://player.vimeo.com/video/1201657364?color=8b1a1a&title=0&byline=0&portrait=0&badge=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Animal Style — Cybertruck Lowrider"></iframe>
       </div>
     </div>
   </div>
 
-  <div style="margin-top: 1rem;">
+  <div class="reveal reveal-delay-5" style="margin-top: 1rem;">
     <div class="reel-featured-label">K-9 Cop</div>
     <div class="reel-wrapper">
-      <iframe
-        src="https://player.vimeo.com/video/1205520574?color=8b1a1a&title=0&byline=0&portrait=0&badge=0"
-        frameborder="0"
-        allow="autoplay; fullscreen; picture-in-picture"
-        allowfullscreen
-        title="Animal Style — K-9 Cop">
-      </iframe>
+      <iframe src="https://player.vimeo.com/video/1205520574?color=8b1a1a&title=0&byline=0&portrait=0&badge=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Animal Style — K-9 Cop"></iframe>
     </div>
   </div>
 </section>
 
 <!-- SERVICES -->
 <section class="services-section" id="services">
-  <div class="section-header">
+  <div class="section-header reveal">
     <p class="section-label" style="margin-bottom:0;">What we do</p>
     <h2 class="section-title display">Services</h2>
   </div>
   <div class="services-grid">
-    <div class="service-item">
+    <div class="service-item reveal reveal-delay-1">
       <p class="service-num">I</p>
       <h3 class="service-name display">Visual Development</h3>
       <p class="service-desc">Style frames, mood boards, and generative concept art that establish the look of a project before a single frame is shot. Fast, iterative, and built for director approval.</p>
     </div>
-    <div class="service-item">
+    <div class="service-item reveal reveal-delay-2">
       <p class="service-num">II</p>
       <h3 class="service-name display">Commercials</h3>
       <p class="service-desc">End-to-end AI video production for brands — concept through delivery. Generative footage, motion design, and finishing at a fraction of traditional production cost.</p>
     </div>
-    <div class="service-item">
+    <div class="service-item reveal reveal-delay-3">
       <p class="service-num">III</p>
       <h3 class="service-name display">Animated Shorts & Features</h3>
       <p class="service-desc">Original animated content built on generative AI pipelines. From proof-of-concept shorts to full feature development — one studio, production-grade output.</p>
     </div>
-    <div class="service-item">
+    <div class="service-item reveal reveal-delay-4">
       <p class="service-num">IV</p>
       <h3 class="service-name display">Book to Film</h3>
       <p class="service-desc">Bringing books and graphic novels to life through generative AI — concept art, animatics, and proof-of-concept reels.</p>
     </div>
-    <div class="service-item">
+    <div class="service-item reveal reveal-delay-5">
       <p class="service-num">V</p>
       <h3 class="service-name display">Gen AI Films</h3>
       <p class="service-desc">Cinematic generative work that pushes the medium — experimental narrative, music videos, and festival-ready short films made with AI as the primary production tool.</p>
@@ -695,35 +579,39 @@
   </div>
 </section>
 
-<!-- IMAGE BREAK 1 -->
-<img src="still-01.jpg" alt="Neo Angeles — Animal Style AI Studio" class="img-break" style="height: 800px; object-position: center center;">
+<!-- PARALLAX BREAK 1 -->
+<div class="parallax-break" data-parallax>
+  <img src="still-01.jpg" alt="Animal Style AI Studio" data-parallax-img>
+</div>
 
 <!-- ABOUT -->
 <section class="about-section" id="about">
   <div class="about-body">
-    <p>Animal Style AI is the independent studio of <strong>Douglas Yoshida</strong> — a VFX artist and Gen AI specialist with more than 25 years experience across DreamWorks, Digital Domain, Sony Pictures Imageworks, and Amazon Studios.</p>
-    <p>Visual effects credits include Stranger Things, the Matrix sequels, Shrek, Star Wars TV shows and Marvel movies.</p>
-    <p>Now with Animal Style AI the same eye is being applied to AI filmmaking.</p>
-    <div class="studio-credits">
+    <p class="reveal">Animal Style AI is the independent studio of <strong>Douglas Yoshida</strong> — a VFX artist and Gen AI specialist with more than 25 years experience across DreamWorks, Digital Domain, Sony Pictures Imageworks, and Amazon Studios.</p>
+    <p class="reveal reveal-delay-1">Visual effects credits include Stranger Things, the Matrix sequels, Shrek, Star Wars TV shows and Marvel movies.</p>
+    <p class="reveal reveal-delay-2">Now with Animal Style AI the same eye is being applied to AI filmmaking.</p>
+    <div class="studio-credits reveal reveal-delay-3">
       <p class="credits-label">Worked at</p>
-      <img src="still-05.jpg" alt="Studio logos — DreamWorks, Digital Domain, Amazon Studios, Sony Pictures Imageworks, Paramount Animation, Method Studios" style="width: 100%; max-width: 400px; margin-top: 1rem; border-radius: 4px;">
+      <img src="still-05.jpg" alt="Studio logos" style="width: 100%; max-width: 400px; margin-top: 1rem; border-radius: 4px;">
     </div>
-    <div class="studio-credits">
+    <div class="studio-credits reveal reveal-delay-4">
       <p class="credits-label">Selected Credits</p>
       <p class="credits-list">Stranger Things 4 · The Matrix Reloaded · The Matrix Revolutions · Shrek · Black Panther · Spider-Man: Homecoming · Fast & Furious 8</p>
     </div>
   </div>
 </section>
 
-<!-- IMAGE BREAK 2 -->
-<img src="still-03.jpg" alt="Neo Angeles — Animal Style AI Studio" class="img-break" style="height: 800px; object-position: center center;">
+<!-- PARALLAX BREAK 2 -->
+<div class="parallax-break" data-parallax>
+  <img src="still-03.jpg" alt="Animal Style AI Studio" data-parallax-img>
+</div>
 
 <!-- CONTACT -->
 <section class="contact-section" id="contact">
-  <h2 class="contact-title display">Get in contact and let's discuss <em>your project.</em></h2>
-  <p class="contact-sub">Available for studio contracts, consulting engagements, and select independent productions. Based in Los Angeles.</p>
+  <h2 class="contact-title display reveal">Get in contact and let's discuss <em>your project.</em></h2>
+  <p class="contact-sub reveal reveal-delay-1">Available for studio contracts, consulting engagements, and select independent productions. Based in Los Angeles.</p>
 
-  <form class="contact-form" action="https://formspree.io/f/mzdqwobj" method="POST">
+  <form class="contact-form reveal reveal-delay-2" action="https://formspree.io/f/mzdqwobj" method="POST">
     <div class="form-row">
       <div class="form-group">
         <label class="form-label" for="name">Name</label>
@@ -753,7 +641,7 @@
     <button class="form-submit" type="submit">Send message</button>
   </form>
 
-  <div class="contact-links">
+  <div class="contact-links reveal reveal-delay-3">
     <a href="mailto:hello@animalstyle.ai" class="contact-link">hello@animalstyle.ai</a>
     <span class="contact-divider">·</span>
     <a href="https://www.linkedin.com/in/yoshfx/" target="_blank" rel="noopener" class="contact-link">LinkedIn</a>
@@ -767,6 +655,37 @@
   <span class="footer-logo display">Animal Style</span>
   <span class="footer-copy">© 2026 Animal Style AI Studio · Los Angeles</span>
 </footer>
+
+<script>
+  // SCROLL REVEAL
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // PARALLAX
+  const parallaxSections = document.querySelectorAll('[data-parallax]');
+  function updateParallax() {
+    parallaxSections.forEach(section => {
+      const img = section.querySelector('[data-parallax-img]');
+      if (!img) return;
+      const rect = section.getBoundingClientRect();
+      const windowH = window.innerHeight;
+      if (rect.bottom < 0 || rect.top > windowH) return;
+      const progress = (windowH - rect.top) / (windowH + rect.height);
+      const offset = (progress - 0.5) * 120;
+      img.style.transform = `translateY(${offset}px)`;
+    });
+  }
+  window.addEventListener('scroll', updateParallax, { passive: true });
+  updateParallax();
+</script>
 
 </body>
 </html>
