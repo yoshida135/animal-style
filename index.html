@@ -267,7 +267,16 @@
   }
 
   @media (max-width: 768px) {
-    .parallax-break { height: 500px; }
+    .parallax-break {
+      height: auto;
+      background: var(--black);
+    }
+    .parallax-break img {
+      position: relative;
+      height: auto;
+      width: 100%;
+      object-fit: contain;
+    }
   }
 
   /* ABOUT */
