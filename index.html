@@ -262,7 +262,10 @@
     transition: opacity 0.4s ease;
   }
 
-  .reel-overlay iframe.loaded { opacity: 1; }
+  .reel-wrapper.playing .reel-overlay {
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
 
   .reel-wrapper.wide {
     padding-bottom: 43.5%;
@@ -759,6 +762,17 @@
   }
   window.addEventListener('scroll', updateParallax, { passive: true });
   updateParallax();
+
+  // HIDE OVERLAY ON PLAY
+  document.querySelectorAll('.reel-wrapper').forEach(wrapper => {
+    wrapper.addEventListener('click', () => {
+      wrapper.classList.add('playing');
+    });
+    wrapper.addEventListener('mouseleave', () => {
+      // Reset playing state when mouse leaves so overlay can show again next hover
+      setTimeout(() => wrapper.classList.remove('playing'), 500);
+    });
+  });
 
   // HOVER PREVIEW - IN PLACE
   const thumbCache = {};
